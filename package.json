@@ -1,0 +1,29 @@
+{
+  "name": "netninjanodejs",
+  "version": "1.0.0",
+  "description": "Just a sandbox",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vadozy/NetNinjaNodeJs.git"
+  },
+  "keywords": [
+    "sandbox"
+  ],
+  "author": "Vadim Storozhuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vadozy/NetNinjaNodeJs/issues"
+  },
+  "homepage": "https://github.com/vadozy/NetNinjaNodeJs#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
