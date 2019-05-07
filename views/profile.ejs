@@ -32,7 +32,14 @@
 
 </head>
 <body>
-    <h1>Welcome to the most awesome website on the net</h1>
+    <% include partials/nav.ejs %>
+    <h1>Welcome to the most awesome profile of <%= id %>, age: <%= age %>, job: <%= job %></h1>
     <p>You won't find a website better anywhere else!</p>
+    <h2>Hobbies</h2>
+    <ul>
+      <% for (h of hobbies) { %>
+        <li><%= h %></li>
+      <% } %>
+    </ul>
 </body>
 </html>

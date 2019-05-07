@@ -1,16 +1,24 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
 
+const app = express();
+//app.disable('etag');
+app.set('view engine', 'ejs');
 
-const server = http.createServer(function(req, res) {
-
-    const myReadStream = fs.createReadStream(`${__dirname}/index.html`, 'utf-8');
-
-    res.writeHead(200, {
-        'Content-Type': 'text/html'
-    });
-    myReadStream.pipe(res);
+app.get('/', (req, res) => {
+    res.render('index');
 });
 
-server.listen(3000, '127.0.0.1');
-console.log('yo dawgs, now listening to port 3000');
+app.get('/contact', (req, res) => {
+    res.send('this is the contact page');
+});
+
+app.get('/profile/:id', (req, res) => {
+    const data = {
+        age: 29,
+        job: 'ninja',
+        hobbies: ['eating', 'fighting']
+    }
+    res.render('profile', { id: req.params.id, ...data });
+});
+
+app.listen(3000);
