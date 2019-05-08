@@ -1,28 +1,17 @@
 const express = require('express');
+const todoController = require('./controllers/todoController');
 
 const app = express();
-//app.disable('etag');
+
+// set template engine
 app.set('view engine', 'ejs');
 
-app.use('/assets', express.static('assets_stuff'));
+// static files (mapped to all routes)
+app.use(express.static('./public'));
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
+// fire controllers
+todoController(app);
 
-app.get('/contact', (req, res) => {
-    console.log(`req.url = ${req.url}`);
-    console.log(req.query);
-    res.send('this is the contact page');
-});
-
-app.get('/profile/:id', (req, res) => {
-    const data = {
-        age: 29,
-        job: 'ninja',
-        hobbies: ['eating', 'fighting']
-    }
-    res.render('profile', { id: req.params.id, ...data });
-});
-
+// listen
 app.listen(3000);
+console.log('Listening to port 3000');
